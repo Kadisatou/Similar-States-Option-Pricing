@@ -141,11 +141,11 @@ Regime Detection
      ↓
 Historical Analogue Search
      ↓
-Analogue Pricing
-     ↓
 Greek-Based Correction
      ↓
 ML Residual Correction
+     ↓ 
+Analogue Pricing
      ↓
 Confidence Estimation
      ↓
