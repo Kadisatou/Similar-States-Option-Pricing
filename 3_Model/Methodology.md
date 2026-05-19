@@ -129,10 +129,10 @@ $$
 where the factors may include:
 
 * stock price $$\(S_t\)$$,
-* volatility \(\sigma_t\),
-* interest rate \(r_t\),
+* volatility $$\(\sigma_t\)$$,
+* interest rate $$\(r_t\)$$,
 * dividend yield,
-* time-to-maturity \(\tau_t\),
+* time-to-maturity $$\(\tau_t\)$$,
 * moneyness,
 * implied volatility,
 * trading volume,
@@ -146,8 +146,8 @@ where the factors may include:
 
 ## Market-State Vector
 
-For each time step \(\tau\), we define:
-
+For each time step $$\(\tau\)$$, we define:
+$$
 \[
 X_\tau =
 \left[
@@ -163,9 +163,9 @@ r_\tau,
 \dots
 \right]
 \]
-
+$$
 where:
-
+$$
 * \(C_\tau\): option price,
 * \(S_\tau\): underlying asset price,
 * \(\sigma_\tau\): volatility,
@@ -173,7 +173,7 @@ where:
 * \(\tau_\tau\): time-to-maturity,
 * \(\Delta_\tau\): option price sensitivity to changes in the underlying asset price,
 * \(\Gamma_\tau\): rate of change of Delta with respect to the underlying asset price.
-
+$$
 The interval sequence becomes:
 
 \[
