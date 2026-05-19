@@ -287,14 +287,10 @@ curse_of_dimensionality.md
 
 Suppose the framework identifies one or several matching historical intervals:
 
-$$
-I_{p_1},I_{p_2},\dots,I_{p_M}
-$$
+$$ I_{p_1},I_{p_2}$$,$$\dots$$,$$I_{p_M}$$
 
 The corresponding future option prices are:
-$$
-C_{p_1+1},C_{p_2+1},\dots,C_{p_M+1}
-$$
+$$C_{p_1+1}$$,$$C_{p_2+1}$$,$$\dots$$,$$C_{p_M+1}$$
 
 ---
 
@@ -302,9 +298,9 @@ $$
 
 If only one analogue interval exists:
 
-$
+$$
 \hat C_{T+1} = C_{p_1+1}
-$
+$$
 
 The future price estimate is directly obtained from the historical analogue.
 
