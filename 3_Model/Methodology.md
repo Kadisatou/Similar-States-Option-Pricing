@@ -128,7 +128,7 @@ $$
 
 where the factors may include:
 
-* stock price \(S_t\),
+* stock price $$\(S_t\)$$,
 * volatility \(\sigma_t\),
 * interest rate \(r_t\),
 * dividend yield,
