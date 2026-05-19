@@ -412,6 +412,7 @@ $$
 \hat C_{t+1}
 
 =
+
 C^{\text{analogue}}_{t+1}
 +
 O_{\text{Greek}}
