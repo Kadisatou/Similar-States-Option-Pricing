@@ -1,4 +1,4 @@
-# The Correction Factor \(O\)
+# The Correction Factor $O$
 
 $O$ is best understood as a residual correction term that adjusts the historical analogue option price to fit current market conditions and regime dynamics.
 
