@@ -287,10 +287,10 @@ curse_of_dimensionality.md
 
 Suppose the framework identifies one or several matching historical intervals:
 
-$$ I_{p_1},I_{p_2}$$,$$\dots$$,$$I_{p_M}$$
+$$ I_{p_1},I_{p_2},\dots,I_{p_M}$$
 
 The corresponding future option prices are:
-$$C_{p_1+1}$$,$$C_{p_2+1}$$,$$\dots$$,$$C_{p_M+1}$$
+$$C_{p_1+1},C_{p_2+1},\dots,C_{p_M+1}$$
 
 ---
 
@@ -310,11 +310,11 @@ The future price estimate is directly obtained from the historical analogue.
 
 If several analogue intervals are found:
 
-$
+$$
 \hat c_{T+1} =
 \frac1M
 \sum_{m=1}^{M} C_{p_m+1}
-$
+$$
 
 The averaging process stabilizes the prediction and reduces sensitivity to isolated market anomalies.
 
@@ -331,18 +331,18 @@ Historical analogue predictions alone may fail to fully capture:
 
 The framework therefore introduces a correction factor:
 
-$
+$$
 C^{\text{true}}_{t+1}
 
 =
 C^{\text{analogue}}_{t+1}
 +
 O_t
-$
+$$
 
 where:
 
-- $C^{\text{analogue}}_{t+1}$ is the historical analogue estimate,
+- $$C^{\text{analogue}}_{t+1}$$ is the historical analogue estimate,
 - and $O_t$ is the market-state correction term.
 
 The correction framework combines:
@@ -364,16 +364,16 @@ The framework integrates probabilistic uncertainty estimation through Gaussian P
 
 The predictive distribution becomes:
 
-$
+$$
 V_t^{pred}
 \sim
 \mathcal N(\mu_t,\sigma_t^2)
-$
+$$
 
 where:
 
-* $\mu_t$ is the predicted option value,
-* $\sigma_t^2$ is the predictive variance.
+* $$\mu_t$$ is the predicted option value,
+* $$\sigma_t^2$$ is the predictive variance.
 
 The predictive variance provides:
 
@@ -407,7 +407,7 @@ reliability_map.md
 
 The final hybrid pricing system becomes:
 
-$
+$$
 \boxed{
 \hat C_{t+1}
 
@@ -418,7 +418,7 @@ O_{\text{Greek}}
 +
 f_\theta(X_t)
 }
-$
+$$
 
 where:
 
