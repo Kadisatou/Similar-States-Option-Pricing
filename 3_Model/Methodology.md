@@ -105,9 +105,9 @@ The proposed methodology therefore integrates:
 
 Define a historical interval:
 
-\[
+$$
 I_t = \{t-n+1,\dots,t\}
-\]
+$$
 
 where:
 
@@ -122,9 +122,9 @@ Each interval represents the recent evolution of the market state.
 
 We define the factor set:
 
-\[
+$$
 F = \{k_1,k_2,\dots,k_m\}
-\]
+$$
 
 where the factors may include:
 
