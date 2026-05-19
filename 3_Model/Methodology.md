@@ -25,7 +25,7 @@ The framework assumes that if the evolution of market factors over a recent inte
 
 The methodology therefore searches for historical analogue intervals whose factor trajectories resemble the current market state.
 
-The future option behavior observed after those historical intervals is then used to estimate the future option price under current market conditions.
+The next option price observed after those historical intervals is then used to estimate the future option price under current market conditions.
 
 ---
 
@@ -74,7 +74,7 @@ Hidden latent structures exist within:
 * order-flow structure,
 * and regime transitions.
 
-The framework therefore learns hidden latent market factors and latent market regimes directly from historical sequential market trajectories.
+The framework therefore learns hidden latent market factors and latent market regimes directly from historical data.
 
 These latent structures become additional predictive variables used during analogue search and option-price estimation.
 
