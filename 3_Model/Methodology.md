@@ -128,7 +128,7 @@ $$
 
 where the factors may include:
 
-* stock price $$\(S_t\)$$,
+* stock price $(S_t)$,
 * volatility $$\(\sigma_t\)$$,
 * interest rate $$\(r_t\)$$,
 * dividend yield,
@@ -146,9 +146,9 @@ where the factors may include:
 
 ## Market-State Vector
 
-For each time step $$\(\tau\)$$, we define:
+For each time step $\tau$, we define:
+
 $$
-\[
 X_\tau =
 \left[
 C_\tau,
@@ -162,28 +162,26 @@ r_\tau,
 \text{Spread}_\tau,
 \dots
 \right]
-\]
 $$
+
 where:
-$$
-* \(C_\tau\): option price,
-* \(S_\tau\): underlying asset price,
-* \(\sigma_\tau\): volatility,
-* \(r_\tau\): interest rate,
-* \(\tau_\tau\): time-to-maturity,
-* \(\Delta_\tau\): option price sensitivity to changes in the underlying asset price,
-* \(\Gamma_\tau\): rate of change of Delta with respect to the underlying asset price.
-$$
+
+- $C_\tau$: option price,
+- $S_\tau$: underlying asset price,
+- $\sigma_\tau$: volatility,
+- $r_\tau$: interest rate,
+- $\tau_\tau$: time-to-maturity,
+- $\Delta_\tau$: option price sensitivity to changes in the underlying asset price,
+- $\Gamma_\tau$: rate of change of Delta with respect to the underlying asset price.
+
 The interval sequence becomes:
 
-\[
-X_{t-n+1:t}
-=
+$$
+x_{t-n+1:1} =
 [X_{t-n+1},...,X_t]
-\]
+$$
 
 ---
-
 # Latent Representation Learning
 
 The framework learns hidden latent market representations from historical intervals.
@@ -199,16 +197,16 @@ The latent learning module includes:
 
 The learned latent variables extend the original factor set into:
 
-\[
+$$
 F^*
-=
 \{S,\sigma,r,\tau,\Delta,\Gamma,\dots,z_1,z_2,\dots,z_p,R_t\}
-\]
+$$
 
 where:
 
-* \(z_i\) are latent market factors,
-* and \(R_t\) denotes latent market regimes.
+- $z_i$ are latent market factors,
+- and $R_t$ denotes latent market regimes.
+
 
 The latent learning framework is detailed in:
 
@@ -224,21 +222,21 @@ latent_factors.md
 
 We define the current interval:
 
-\[
+$$
 I_{\text{current}} = \{T-n+1,\dots,T\}
-\]
+$$
 
 where:
 
-* \(T\) denotes the current time point.
+- $T$ denotes the current time point.
 
 For each factor:
 
-\[
+$$
 k_j^{\text{current}}(i)
-\]
+$$
 
-we observe the recent trajectory over the last \(n\) observations.
+we observe the recent trajectory over the last $n$ observations.
 
 ---
 
@@ -246,24 +244,24 @@ we observe the recent trajectory over the last \(n\) observations.
 
 The framework scans historical data and searches for intervals:
 
-\[
+$$
 I_p = \{p-n+1,\dots,p\}
-\]
+$$
 
 such that:
 
-\[
+$$
 |k_j^{\text{current}}(i)-k_j^{(p)}(i)| \le \epsilon_j
-\]
+$$
 
 for:
 
-* all factors \(j\),
-* and all time points inside the interval.
-
+- all factors $j$,
+- and all time points inside the interval.
+- 
 where:
 
-* \(\epsilon_j\) is the similarity tolerance threshold for factor \(j\).
+* $\epsilon_j$ is the similarity tolerance threshold for factor $j$.
 
 The objective is to identify historical periods whose market-state evolution resembles the current market state.
 
@@ -289,15 +287,14 @@ curse_of_dimensionality.md
 
 Suppose the framework identifies one or several matching historical intervals:
 
-\[
+$$
 I_{p_1},I_{p_2},\dots,I_{p_M}
-\]
+$$
 
 The corresponding future option prices are:
-
-\[
+$$
 C_{p_1+1},C_{p_2+1},\dots,C_{p_M+1}
-\]
+$$
 
 ---
 
@@ -305,9 +302,9 @@ C_{p_1+1},C_{p_2+1},\dots,C_{p_M+1}
 
 If only one analogue interval exists:
 
-\[
+$
 \hat C_{T+1} = C_{p_1+1}
-\]
+$
 
 The future price estimate is directly obtained from the historical analogue.
 
@@ -317,12 +314,11 @@ The future price estimate is directly obtained from the historical analogue.
 
 If several analogue intervals are found:
 
-\[
-\hat C_{T+1}
-=
+$
+\hat c_{T+1} =
 \frac1M
 \sum_{m=1}^{M} C_{p_m+1}
-\]
+$
 
 The averaging process stabilizes the prediction and reduces sensitivity to isolated market anomalies.
 
@@ -339,18 +335,19 @@ Historical analogue predictions alone may fail to fully capture:
 
 The framework therefore introduces a correction factor:
 
-\[
+$
 C^{\text{true}}_{t+1}
+
 =
 C^{\text{analogue}}_{t+1}
 +
 O_t
-\]
+$
 
 where:
 
-* \(C^{\text{analogue}}_{t+1}\) is the historical analogue estimate,
-* and \(O_t\) is the market-state correction term.
+- $C^{\text{analogue}}_{t+1}$ is the historical analogue estimate,
+- and $O_t$ is the market-state correction term.
 
 The correction framework combines:
 
@@ -371,16 +368,16 @@ The framework integrates probabilistic uncertainty estimation through Gaussian P
 
 The predictive distribution becomes:
 
-\[
+$
 V_t^{pred}
 \sim
 \mathcal N(\mu_t,\sigma_t^2)
-\]
+$
 
 where:
 
-* \(\mu_t\) is the predicted option value,
-* \(\sigma_t^2\) is the predictive variance.
+* $\mu_t$ is the predicted option value,
+* $\sigma_t^2$ is the predictive variance.
 
 The predictive variance provides:
 
@@ -414,9 +411,10 @@ reliability_map.md
 
 The final hybrid pricing system becomes:
 
-\[
+$
 \boxed{
 \hat C_{t+1}
+
 =
 C^{\text{analogue}}_{t+1}
 +
@@ -424,13 +422,13 @@ O_{\text{Greek}}
 +
 f_\theta(X_t)
 }
-\]
+$
 
 where:
 
-* \(C^{\text{analogue}}_{t+1}\) captures historical market analogues,
-* \(O_{\text{Greek}}\) captures theoretical financial corrections,
-* and \(f_\theta(X_t)\) captures nonlinear residual market dynamics.
+* $C^{\text{analogue}}_{t+1}$ captures historical market analogues,
+* $O_{\text{Greek}}$ captures theoretical financial corrections,
+* and $f_\theta(X_t)$ captures nonlinear residual market dynamics.
 
 ---
 
