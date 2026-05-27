@@ -13,10 +13,7 @@ Let:
 Define the option-price distance:
 
 $$
-
-d_S(p)
-
-=
+d_S(p)=
 \left\|
 S^{current} - S^{(p)}
 \right\|
@@ -25,11 +22,7 @@ $$
 and factor distances:
 
 $$
-
-d_{k_j}(p)
-
-=
-
+d_{k_j}(p)=
 \left\|
 k_j^{current} - k_j^{(p)}
 \right\|
@@ -39,11 +32,7 @@ A total analogue distance can then be defined as:
 
 
 $$
-
-D(p)
-
-=
-
+D(p)=
 \alpha d_S(p)
 +
 \sum_{j=1}^{m}
@@ -60,7 +49,6 @@ Historical intervals are then ranked by increasing $$D(p)$$.
 The top $$K$$ most similar historical intervals are selected as analogues.
 
 ---
-
 
 # Weighted Prediction from Historical Analogues
 
@@ -80,10 +68,7 @@ Instead of averaging future prices equally, more similar analogues can receive l
 Define analogue weights:
 
 $$
-
-w_p
-
-=
+w_p =
 \frac{
 1/(D(p)+\delta)
 }{
@@ -101,10 +86,7 @@ where:
 The predicted next option price becomes:
 
 $$
-
-\hat S_T
-
-=
+\hat S_T=
 \sum_{p \in \mathcal{A}}
 w_p S_{p+n}
 $$
@@ -120,10 +102,7 @@ Thus, historical intervals that more closely resemble the current market state c
 Exponential weighting:
 
 $$
-
-w_p
-
-=
+w_p=
 \frac{
 e^{-D(p)}
 }{
