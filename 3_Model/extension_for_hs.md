@@ -1,4 +1,3 @@
-```markdown
 # Future Extension for Historical Search and Sliding: Ranked Analogues and Weighted Prediction
 
 ## Ranked Historical Analogues
@@ -142,7 +141,3 @@ The framework could later predict:
 - short-term option price evolution
 - volatility trajectories
 - probability distributions of future prices
-
-instead of only predicting a single next price value.
-```
-
