@@ -1,4 +1,4 @@
-# State Similarity Option Pricing Model
+# Similar States Option Pricing Model
 
 ## Overview
 
