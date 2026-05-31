@@ -1,4 +1,4 @@
-# Historical State Similarity Dynamic Option Pricing
+# Historical State Similarity Option Pricing
 
 ## Overview
 
