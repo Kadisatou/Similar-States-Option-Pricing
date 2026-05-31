@@ -113,10 +113,7 @@ $$
 
 ## 3. Pricing the Option with Black-Scholes
 
-Given 
-$$ \hat{S}_{t+1} $$
-
-and $$ \hat{\sigma}_{t+1} $$, the option price is computed using the Black-Scholes formula.
+Given $$\hat{S}_{t+1}$$ and $$\hat{\sigma}_{t+1}$$, the option price is computed using the Black-Scholes formula.
 
 For a European call option:
 
