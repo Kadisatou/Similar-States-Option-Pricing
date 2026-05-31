@@ -4,7 +4,7 @@ This baseline model forecasts the next-day option price using a classical three-
 
 $$
 \hat{C}_{t+1} =
-A(\hat{S}_{t+1}, K, r_{t+1}, \hat{\sigma}_{t+1}, \tau_{t+1})
+f(\hat{S}_{t+1}, K, r_{t+1}, \hat{\sigma}_{t+1}, \tau_{t+1})
 $$
 
 where:
