@@ -2,7 +2,7 @@
 
 ## Overview
 
-Dynamic State Similarity Pricing is a hybrid computational finance and machine learning framework for European option pricing based on:
+Similar States Option Pricing is a hybrid computational finance and machine learning framework for European option pricing based on:
 
 * historical market-state similarity,
 * latent factor learning,
