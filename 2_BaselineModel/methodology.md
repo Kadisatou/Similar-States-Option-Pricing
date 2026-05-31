@@ -3,8 +3,7 @@
 This baseline model forecasts the next-day option price using a classical three-step pipeline:
 
 $$
-\hat{C}_{t+1}
-=
+\hat{C}_{t+1} =
 A(\hat{S}_{t+1}, K, r_{t+1}, \hat{\sigma}_{t+1}, \tau_{t+1})
 $$
 
@@ -44,8 +43,7 @@ $$
 The forecasted next-day price is then:
 
 $$
-\hat{S}_{t+1}
-=
+\hat{S}_{t+1} =
 S_t \exp(\hat{R}_{t+1})
 $$
 
@@ -84,8 +82,7 @@ $$
 The conditional variance follows:
 
 $$
-\sigma_{t+1}^2
-=
+\sigma_{t+1}^2 =
 \omega
 +
 \alpha \epsilon_t^2
@@ -102,8 +99,7 @@ where:
 The next-day volatility forecast is:
 
 $$
-\hat{\sigma}_{t+1}
-=
+\hat{\sigma}_{t+1} =
 \sqrt{
 \omega
 +
@@ -122,18 +118,15 @@ Given $$\hat{S}_{t+1}$$ and $$\hat{\sigma}_{t+1}$$, the option price is computed
 For a European call option:
 
 $$
-\hat{C}_{t+1}
-=
-\hat{S}_{t+1} N(d_1)
--
+\hat{C}_{t+1} =
+\hat{S}_{t+1} N(d_1)-
 K e^{-r_{t+1}\tau_{t+1}} N(d_2)
 $$
 
 where:
 
 $$
-d_1
-=
+d_1=
 \frac{
 \ln\left(\frac{\hat{S}_{t+1}}{K}\right)
 +
@@ -166,16 +159,14 @@ $$
 ### Step 2: Forecast the underlying price
 
 $$
-\hat{S}_{t+1}
-=
+\hat{S}_{t+1}=
 S_t \exp(\hat{R}_{t+1})
 $$
 
 ### Step 3: Forecast volatility
 
 $$
-\hat{\sigma}_{t+1}
-=
+\hat{\sigma}_{t+1}=
 \sqrt{
 \omega
 +
@@ -188,8 +179,7 @@ $$
 ### Step 4: Compute time to maturity
 
 $$
-\tau_{t+1}
-=
+\tau_{t+1}=
 \frac{T-(t+1)}{252}
 $$
 
@@ -198,8 +188,7 @@ assuming 252 trading days per year.
 ### Step 5: Compute the option price
 
 $$
-\hat{C}_{t+1}
-=
+\hat{C}_{t+1}=
 BS(\hat{S}_{t+1},K,r_{t+1},\hat{\sigma}_{t+1},\tau_{t+1})
 $$
 
