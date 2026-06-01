@@ -62,7 +62,9 @@ project-root/
 │   └── README.md
 │
 ├── 2_BaselineModel/
-│   └── README.md
+│   ├── README.md
+│   ├── classical_methodology.md
+│   ├── ML_methodology.md
 │
 ├── 3_Model/
 │   ├── README.md
