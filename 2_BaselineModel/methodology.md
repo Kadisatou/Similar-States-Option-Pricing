@@ -363,7 +363,7 @@ ARIMA(1,1,1)
 $$
 
 where:
-##Please put the vairbales inside $$ otherwise github will not translate it well.
+## Please put the vairbales inside $$ otherwise github will not translate it well.
 
 - \(p=1\): one autoregressive term,
 - \(d=1\): first differencing,
@@ -403,13 +403,15 @@ $$
 C_t - C_{t-1}
 $$
 
-is the first-differenced option price; and 
-##Add: 
+is the first-differenced option price;
+
+## Add: 
 and C_t+1 = DElta + C_{t} is the forecasted option price (correct me if I am wrong.)
 
 ---
 
-## Computation Steps (remove this section)
+## Remove the section below, i.e., on the computation Steps. It is not relevant.
+## Computation Steps 
 
 ### Step 1
 
@@ -507,7 +509,7 @@ $$
 ---
 
 ### Variables 
-## Add $$ to the formulas otherwise it won't work.
+## Put the formulas inside $$ otherwise it won't work.
 
 - \(N\) = number of forecasts
 - \(C_{t+1,i}\) = true option price
@@ -617,7 +619,6 @@ The State Similarity model will be evaluated against these benchmarks to determi
 
 
 
-
 # Baseline Methodology: Direct Next-Day Option Price Forecasting
 
 ## Overview
@@ -636,24 +637,28 @@ $$
 
 Unlike traditional option pricing models such as Black-Scholes, this baseline does not attempt to forecast underlying asset prices, volatility, interest rates, or time to maturity. Instead, the option price itself is treated as a time series and forecasted directly.
 
-Two classical forecasting approaches are used:
+Two benchmark forecasting approaches are used:
 
-1. **Persistence Forecast**
-2. **ARIMA Forecast**
+1. **Persistence Forecast (Naïve Benchmark)**
+2. **ARIMA Forecast (Classical Statistical Benchmark)**
 
-These methods are appropriate because the target variable is a sequential time series where the next value may depend on previous observations. The persistence model provides a simple benchmark, while ARIMA captures temporal patterns and trends that may exist in historical option prices.
+These methods are appropriate because the target variable is a sequential time series where future values may depend on previous observations.
+
+The persistence model provides a simple benchmark that assumes no change in the option price from one day to the next. It establishes the minimum level of predictive performance that any more sophisticated model should exceed.
+
+The ARIMA model provides a classical statistical benchmark by explicitly modelling temporal dependencies, trends, and autocorrelation present in historical option prices.
 
 For each option series, 10 valid forecast dates are randomly selected. For each selected date, only information available up to that date is used to generate a one-step-ahead forecast, thereby avoiding look-ahead bias.
 
 ---
 
-# 1. Persistence Forecast
+# 1. Persistence Forecast (Naïve Benchmark)
 
 ## Motivation
 
 The persistence model assumes that the best estimate of tomorrow's option price is today's observed option price.
 
-This approach is commonly used as a benchmark in financial forecasting because many financial time series exhibit strong short-term continuity.
+This approach is commonly used as a naïve benchmark in financial forecasting because many financial time series exhibit strong short-term continuity.
 
 Any forecasting model should ideally outperform this simple baseline.
 
@@ -691,7 +696,36 @@ where:
 
 ---
 
-# 2. ARIMA Forecast
+## Computation Steps
+
+### Step 1
+
+Observe the current option price:
+
+$$
+C_t
+$$
+
+### Step 2
+
+Assign tomorrow's forecast equal to today's value:
+
+$$
+\hat{C}_{t+1}^{(P)}=
+C_t
+$$
+
+### Step 3
+
+Compare the prediction against the true next-day price:
+
+$$
+C_{t+1}
+$$
+
+---
+
+# 2. ARIMA Forecast (Classical Statistical Benchmark)
 
 ## Motivation
 
@@ -777,7 +811,7 @@ $$
 \widehat{\Delta C}_{t+1}
 $$
 
-which is then converted back to the forecasted option price:
+which is transformed back into an option price forecast using:
 
 $$
 \hat{C}_{t+1}=
@@ -786,19 +820,16 @@ C_t
 \widehat{\Delta C}_{t+1}
 $$
 
+where:
+
+- $$\widehat{\Delta C}_{t+1}$$ = forecasted next-day price change,
+- $$\hat{C}_{t+1}$$ = forecasted next-day option price.
+
 The resulting forecast is therefore:
 
 $$
 \hat{C}_{t+1}^{(ARIMA)}
 $$
-
-If
-
-$$
-\hat{C}_{t+1}^{(ARIMA)} < 0
-$$
-
-the forecast is discarded because option prices cannot be negative.
 
 ---
 
@@ -891,7 +922,7 @@ e_i^2
 }
 $$
 
-or:
+or equivalently:
 
 $$
 RMSE=
@@ -923,9 +954,9 @@ Lower RMSE indicates better predictive performance.
 
 # 4. Baseline Objective
 
-The purpose of this baseline is to establish a classical benchmark for the State Similarity Option Pricing project.
+The purpose of this baseline is to establish benchmark models for the State Similarity Option Pricing project.
 
-The baseline forecasting framework is:
+The forecasting framework is:
 
 $$
 \{C_1,\ldots,C_t\}
@@ -933,14 +964,14 @@ $$
 \hat{C}_{t+1}
 $$
 
-using either:
+using either the naïve benchmark:
 
 $$
 \hat{C}_{t+1}^{(P)}=
 C_t
 $$
 
-or
+or the classical statistical benchmark:
 
 $$
 \hat{C}_{t+1}^{(ARIMA)}=
@@ -948,3 +979,6 @@ ARIMA(C_1,\ldots,C_t)
 $$
 
 The State Similarity model will be evaluated against these benchmarks to determine whether historical market-state matching can improve next-day option price forecasting accuracy.
+
+A successful State Similarity model should achieve lower MAE and RMSE values than both the persistence and ARIMA benchmarks.
+
