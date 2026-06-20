@@ -27,8 +27,6 @@ The persistence model provides a simple benchmark that assumes no change in the 
 
 The ARIMA model provides a classical statistical benchmark by explicitly modelling temporal dependencies, trends, and autocorrelation present in historical option prices.
 
-For each option series, 10 valid forecast dates are randomly selected. For each selected date, only information available up to that date is used to generate a one-step-ahead forecast, thereby avoiding look-ahead bias.
-
 ---
 
 # 1. Persistence Forecast (Naïve Benchmark)
@@ -75,35 +73,6 @@ where:
 
 ---
 
-## Computation Steps
-
-### Step 1
-
-Observe the current option price:
-
-$$
-C_t
-$$
-
-### Step 2
-
-Assign tomorrow's forecast equal to today's value:
-
-$$
-\hat{C}_{t+1}^{(P)}=
-C_t
-$$
-
-### Step 3
-
-Compare the prediction against the true next-day price:
-
-$$
-C_{t+1}
-$$
-
----
-
 # 2. ARIMA Forecast (Classical Statistical Benchmark)
 
 ## Motivation
@@ -130,7 +99,7 @@ $$
 \{C_1, C_2, \ldots, C_t\}
 $$
 
-In the implementation, at least 30 historical observations are required before a forecast is produced.
+In the implementation, at least 30 historical observations are required before a forecast is produced. Note that this approach also avoids look ehead bias since only available data up to the forecast date $$t$$ is used.
 
 ---
 
