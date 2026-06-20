@@ -302,7 +302,7 @@ $$
 \hat C_{T+1} = C_{p_1+1}
 $$
 
-The future price estimate is directly obtained from the historical analogue.
+The unadjusted future price estimate is directly obtained from the historical analogue.
 
 ---
 
@@ -311,7 +311,7 @@ The future price estimate is directly obtained from the historical analogue.
 If several analogue intervals are found:
 
 $$
-\hat c_{T+1} =
+\hat c_{T+1}=
 \frac1M
 \sum_{m=1}^{M} C_{p_m+1}
 $$
@@ -320,7 +320,7 @@ The averaging process stabilizes the prediction and reduces sensitivity to isola
 
 ---
 
-# Correction Framework
+## Correction Framework
 
 Historical analogue predictions alone may fail to fully capture:
 
@@ -329,12 +329,10 @@ Historical analogue predictions alone may fail to fully capture:
 * liquidity distortions,
 * and market structural shifts.
 
-The framework therefore introduces a correction factor:
+The framework therefore introduces a correction factor such as the final predicted option price becomes
 
 $$
-C^{\text{true}}_{t+1}
-
-=
+C^{\text{true}}_{t+1}=
 C^{\text{analogue}}_{t+1}
 +
 O_t
@@ -343,7 +341,7 @@ $$
 where:
 
 - $$C^{\text{analogue}}_{t+1}$$ is the historical analogue estimate,
-- and $O_t$ is the market-state correction term.
+- and $$$O_t$ is the market-state correction term.
 
 The correction framework combines:
 
@@ -409,14 +407,9 @@ The final hybrid pricing system becomes:
 
 $$
 \boxed{
-\hat C_{t+1}
-
-=
-
-C^{\text{analogue}}_{t+1}
-+
-O_{\text{Greek}}
-+
+\hat C_{t+1}=
+C^{\text{analogue}}_{t+1}+
+O_{\text{Greek}}+
 f_\theta(X_t)
 }
 $$
