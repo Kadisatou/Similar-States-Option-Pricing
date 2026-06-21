@@ -4,15 +4,15 @@ Exact matching between high-dimensional market intervals becomes increasingly di
 
 The similarity condition:
 
-\[
+$$
 |k_j-k_j'| \le \epsilon
-\]
+$$
 
 requires all factors to remain sufficiently close.
 
 Here:
 
-* \(\epsilon\) denotes the similarity tolerance threshold,
+* $\epsilon$ denotes the similarity tolerance threshold,
 * controlling how close two market states must be to be considered analogous.
 
 When many factors are included, exact historical matching becomes unlikely because the model must simultaneously match:
@@ -35,19 +35,19 @@ Therefore, the framework replaces strict exact matching with softer similarity m
 
 The framework scans historical data and searches for intervals:
 
-\[
-I_p = \{p-n+1,...,p\}
-\]
+$$
+I_p = \{p-n+1,\ldots,p\}
+$$
 
 such that:
 
-\[
+$$
 |k_j^{\text{current}}(i)-k_j^{(p)}(i)| \le \epsilon_j
-\]
+$$
 
 for:
 
-* all factors \(j\),
+* all factors $j$,
 * and all time points inside the interval.
 
 This strict condition may fail when the factor space becomes too large.
@@ -64,16 +64,15 @@ The framework therefore uses:
 
 We define:
 
-\[
-d(I_a,I_b)
-=
-\sum_j w_j ||k_j^{(a)}-k_j^{(b)}||^2
-\]
+$$
+d(I_a,I_b)=
+\sum_j w_j \left\|k_j^{(a)}-k_j^{(b)}\right\|^2
+$$
 
 where:
 
-* \(I_a\) and \(I_b\) are two market intervals,
-* \(w_j\) represents the importance weight of factor \(j\),
+* $$I_a$$ and $$I_b$$ are two market intervals,
+* $$w_j§$ represents the importance weight of factor $$j$$,
 * and the norm measures the difference between the trajectories of the factors.
 
 ---
@@ -87,9 +86,9 @@ The metric measures how different two market-state trajectories are.
 
 The nearest neighbors are therefore the historical intervals producing the smallest values of:
 
-\[
+$$
 d(I_a,I_b)
-\]
+$$
 
 These intervals are selected as the historical analogues used for prediction.
 
@@ -97,7 +96,7 @@ These intervals are selected as the historical analogues used for prediction.
 
 # Factor Weights
 
-The weights \(w_j\) control the importance of each market factor.
+The weights $w_j$ control the importance of each market factor.
 
 For example:
 
@@ -122,21 +121,21 @@ Instead of requiring exact equality or strict tolerance matching, the model sele
 
 Given the current interval:
 
-\[
+$$
 I_{\text{current}}
-\]
+$$
 
 the model searches for historical intervals:
 
-\[
-I_{p_1},I_{p_2},...,I_{p_M}
-\]
+$$
+I_{p_1},I_{p_2},\ldots,I_{p_M}
+$$
 
 that minimize:
 
-\[
+$$
 d(I_{\text{current}},I_p)
-\]
+$$
 
 The selected intervals become the historical analogues.
 
@@ -146,18 +145,15 @@ The selected intervals become the historical analogues.
 
 A radial basis Gaussian kernel is used to transform distances into similarity scores:
 
-\[
-k(X_i,X_j)
-=
+$$
+k(X_i,X_j)=
 \exp
-\left(
--\frac{||X_i-X_j||^2}{2l^2}
-\right)
-\]
+\left(-\frac{\|X_i-X_j\|^2}{2l^2}\right)
+$$
 
 where:
 
-* \(l\) controls similarity smoothness,
+* $$l$$ controls similarity smoothness,
 * nearby market states produce stronger similarity scores.
 
 ---
@@ -185,39 +181,37 @@ Instead of treating all selected analogues equally, the model can weight each an
 
 If the model identifies analogue intervals:
 
-\[
-I_{p_1},I_{p_2},...,I_{p_M}
-\]
+$$
+I_{p_1},I_{p_2},\ldots,I_{p_M}
+$$
 
 with similarity weights:
 
-\[
-\alpha_1,\alpha_2,...,\alpha_M
-\]
+$$
+\alpha_1,\alpha_2,\ldots,\alpha_M
+$$
 
 then the prediction can be written as:
 
-\[
-\hat C_{T+1}
-=
+$$
+\hat C_{T+1}=
 \sum_{m=1}^{M}
 \alpha_m C_{p_m+1}
-\]
+$$
 
 where:
 
-\[
+$$
 \sum_{m=1}^{M}\alpha_m = 1
-\]
+$$
 
 and:
 
-\[
-\alpha_m
-=
+$$
+\alpha_m=
 \frac{k(I_{\text{current}},I_{p_m})}
 {\sum_{q=1}^{M}k(I_{\text{current}},I_{p_q})}
-\]
+$$
 
 This gives more influence to the most similar historical analogues.
 
