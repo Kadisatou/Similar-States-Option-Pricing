@@ -39,7 +39,7 @@ Therefore, the framework corrects the analogue-based prediction using both:
 
 Option prices are highly sensitive to volatility.
 
-If the historical analogue had volatility $\sigma_p$, but the current market has volatility \(\sigma_t\), the correction becomes:
+If the historical analogue had volatility $$\sigma_p$$, but the current market has volatility \(\sigma_t\), the correction becomes:
 
 $$
 O_{\sigma}
@@ -252,7 +252,6 @@ $$
 The final corrected price becomes:
 
 $$
-
 \hat C_{t+1}=
 C^{\text{analogue}}_{t+1}+
 O_{\text{Greek}}+
