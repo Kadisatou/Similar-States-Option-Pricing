@@ -5,14 +5,9 @@ $O$ is best understood as a residual correction term that adjusts the historical
 We define:
 
 $$
-
-C^{\text{true}}_{t+1}
-
-=
-C^{\text{analogue}}_{t+1}
-+
+C^{\text{true}}_{t+1}=
+C^{\text{analogue}}_{t+1}+
 O_t
-
 $$
 
 where:
@@ -174,16 +169,10 @@ Poor liquidity can reduce pricing reliability and distort observed option prices
 The theoretical financial correction becomes:
 
 $$
-
-O_{\text{Greek}}
-
-=
-\Delta_t(S_t-S_p)
-+
-\text{Vega}_t(\sigma_t-\sigma_p)
-+
-\rho_t(r_t-r_p)
-+
+O_{\text{Greek}}=
+\Delta_t(S_t-S_p)+
+\text{Vega}_t(\sigma_t-\sigma_p)+
+\rho_t(r_t-r_p)+
 \Theta_t(\tau_t-\tau_p)
 $$
 
@@ -202,11 +191,7 @@ Financial markets remain highly nonlinear even after Greek-based corrections.
 
 Therefore, the remaining pricing discrepancy is modeled using machine learning:
 
-$$
-
-O_{\text{residual}}
-
-=
+$$O_{\text{residual}}=
 f_{\theta}(X_t)
 $$
 
@@ -217,13 +202,8 @@ where:
 
 The final correction becomes:
 
-$$
-
-O_t
-
-=
-O_{\text{Greek}}
-+
+$$O_t=
+O_{\text{Greek}}+
 O_{\text{residual}}
 $$
 
@@ -247,10 +227,7 @@ where:
 The predicted residual becomes:
 
 $$
-
-\hat O_{\text{residual}}
-
-=
+\hat O_{\text{residual}}=
 \mathbb E
 \left[
 O_{\text{residual}}
@@ -276,13 +253,9 @@ The final corrected price becomes:
 
 $$
 
-\hat C_{t+1}
-
-=
-C^{\text{analogue}}_{t+1}
-+
-O_{\text{Greek}}
-+
+\hat C_{t+1}=
+C^{\text{analogue}}_{t+1}+
+O_{\text{Greek}}+
 f_{\theta}(X_t)
 $$
 
