@@ -72,7 +72,7 @@ $$
 where:
 
 * $$I_a$$ and $$I_b$$ are two market intervals,
-* $$w_j§$ represents the importance weight of factor $$j$$,
+* $$w_j$$ represents the importance weight of factor $$j$$,
 * and the norm measures the difference between the trajectories of the factors.
 
 ---
