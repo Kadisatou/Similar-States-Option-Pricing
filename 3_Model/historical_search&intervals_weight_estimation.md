@@ -13,8 +13,7 @@ Market factors such as volatility, interest rates, liquidity variables, and late
 Let:
 
 $$
-S^{current}
-=
+S^{current}=
 (S_1,S_2,\ldots,S_n)
 $$
 
@@ -23,8 +22,7 @@ denote the current normalized option-price interval of length \(n\).
 For each historical time point \(p\), define the historical interval:
 
 $$
-S^{(p)}
-=
+S^{(p)}=
 (S_{p-n+1},S_{p-n+2},\ldots,S_p)
 $$
 
@@ -45,11 +43,9 @@ using historical intervals that resemble the current market state.
 For each historical interval \(S^{(p)}\), compute the Euclidean distance from the current interval:
 
 $$
-d(p)
-=
+d(p)=
 \left\|
-S^{current}
--
+S^{current}-
 S^{(p)}
 \right\|^2
 $$
@@ -57,12 +53,10 @@ $$
 which can be written as:
 
 $$
-d(p)
-=
+d(p)=
 \sum_{i=1}^{n}
 \left(
-S_i^{current}
--
+S_i^{current}-
 S_i^{(p)}
 \right)^2
 $$
@@ -76,11 +70,9 @@ Small values indicate strong similarity between the current interval and the his
 Distances are transformed into similarity scores using a Gaussian kernel:
 
 $$
-k(p)
-=
+k(p)=
 \exp
-\left(
--\frac{d(p)}
+\left(-\frac{d(p)}
 {2l^2}
 \right)
 $$
@@ -105,8 +97,7 @@ Properties:
 The similarity scores are normalized into weights:
 
 $$
-\alpha_p
-=
+\alpha_p=
 \frac{k(p)}
 {\sum_{q \in \mathcal A} k(q)}
 $$
@@ -123,9 +114,7 @@ The weights satisfy:
 
 $$
 \sum_{p \in \mathcal A}
-\alpha_p
-=
-1
+\alpha_p=1
 $$
 
 ---
@@ -135,8 +124,7 @@ $$
 The future option price is predicted as:
 
 $$
-\hat S_{T+1}
-=
+\hat S_{T+1}=
 \sum_{p \in \mathcal A}
 \alpha_p S_{p+1}
 $$
@@ -152,11 +140,9 @@ Historical intervals with stronger similarity receive larger weights and therefo
 For each historical interval, compute the Euclidean distance:
 
 $$
-D(p)
-=
+D(p)=
 \left\|
-S^{current}
--
+S^{current}-
 S^{(p)}
 \right\|
 $$
@@ -164,13 +150,11 @@ $$
 or equivalently:
 
 $$
-D(p)
-=
+D(p)=
 \sqrt{
 \sum_{i=1}^{n}
 \left(
-S_i^{current}
--
+S_i^{current}-
 S_i^{(p)}
 \right)^2
 }
@@ -187,8 +171,7 @@ The top \(K\) nearest intervals are selected as analogues.
 Each selected analogue receives a weight proportional to the inverse of its distance:
 
 $$
-w_p
-=
+w_p=
 \frac{
 1/(D(p)+\delta)
 }{
@@ -209,8 +192,7 @@ The weights satisfy:
 
 $$
 \sum_{p \in \mathcal A}
-w_p
-=
+w_p=
 1
 $$
 
@@ -221,8 +203,7 @@ $$
 The next option price is predicted as:
 
 $$
-\hat S_{T+1}
-=
+\hat S_{T+1}=
 \sum_{p \in \mathcal A}
 w_p S_{p+1}
 $$
